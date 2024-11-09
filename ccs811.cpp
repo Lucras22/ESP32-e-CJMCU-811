@@ -7,6 +7,7 @@ Serial.begin(115200);
 
 Serial.println("CCS811 teste");
 
+  //Iniciando o I2C do sensor
 if(!ccs.begin()){
 Serial.println("Erro ao iniciar sensor.");
 while(1);
