@@ -25,19 +25,17 @@ ccs.setTempOffset(temp - 25.0);
 
 void loop() {
 if(ccs.available()){
-float temp = ccs.calculateTemperature();
-if(!ccs.readData()){
-Serial.print("CO2: ");
-Serial.print(ccs.geteCO2());
-Serial.print("ppm, TVOC: ");
-Serial.print(ccs.getTVOC());
-Serial.print("ppb Temp:");
-Serial.println(temp);
-}
-else{
-Serial.println("ERROR!");
-while(1);
-}
+  if(!ccs.readData()){
+    float temp = ccs.calculateTemperature();
+    Serial.print("CO2: ");
+    Serial.print(ccs.geteCO2());
+    Serial.print("ppm, TVOC: ");
+    Serial.print(ccs.getTVOC());
+    Serial.print("ppb Temp: ");
+    Serial.println(temp);
+  } else {
+    Serial.println("Erro na leitura dos dados.");
+  }
 }
 delay(500);
 }
