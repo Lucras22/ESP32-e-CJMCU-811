@@ -3,6 +3,7 @@ O sensor de qualidade do ar CCS811 CJMCU-811 é um módulo compacto para detecç
 
 ## Estudado:
 - https://www.smartkits.com.br/sensor-de-qualidade-do-ar-co2-e-cov-ccs811-cjmcu-811?srsltid=AfmBOoqjDoPpsmungo4YxWLXBQZMbhaUV3fWBH9gwVaJ3j_jrszos6yp
+- https://how2electronics.com/monitor-ccs811-co2-tvoc-on-esp8266-esp32-webserver/
 
 ## Ligação circuito:
 
