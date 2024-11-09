@@ -1,3 +1,7 @@
+/*Lucas galindo
+Testando codigos para o sensor CCS-811 modelo usado CJMCU811
+*/
+
 #include "Adafruit_CCS811.h"
 
 Adafruit_CCS811 ccs;
