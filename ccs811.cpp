@@ -1,5 +1,5 @@
 /*Lucas galindo
-Testando codigos para o sensor CCS-811 modelo usado CJMCU811
+Codigo funcional para o sensor CJMCU-811
 */
 
 #include "Adafruit_CCS811.h"
@@ -7,35 +7,31 @@ Testando codigos para o sensor CCS-811 modelo usado CJMCU811
 Adafruit_CCS811 ccs;
 
 void setup() {
-Serial.begin(115200);
+  Serial.begin(115200);
 
-Serial.println("CCS811 teste");
+  Serial.println("CCS811 test");
 
-  //Iniciando o I2C do sensor
-if(!ccs.begin()){
-Serial.println("Erro ao iniciar sensor.");
-while(1);
-}
+  if(!ccs.begin()){
+    Serial.println("Failed to start sensor! Please check your wiring.");
+    while(1);
+  }
 
-//Calibrando a temperatura padrão do sensor
-while(!ccs.available());
-float temp = ccs.calculateTemperature();
-ccs.setTempOffset(temp - 25.0);
+  // Wait for the sensor to be ready
+  while(!ccs.available());
 }
 
 void loop() {
-if(ccs.available()){
-  if(!ccs.readData()){
-    float temp = ccs.calculateTemperature();
-    Serial.print("CO2: ");
-    Serial.print(ccs.geteCO2());
-    Serial.print("ppm, TVOC: ");
-    Serial.print(ccs.getTVOC());
-    Serial.print("ppb Temp: ");
-    Serial.println(temp);
-  } else {
-    Serial.println("Erro na leitura dos dados.");
+  if(ccs.available()){
+    if(!ccs.readData()){
+      Serial.print("CO2: ");
+      Serial.print(ccs.geteCO2());
+      Serial.print("ppm, TVOC: ");
+      Serial.println(ccs.getTVOC());
+    }
+    else{
+      Serial.println("ERROR!");
+      while(1);
+    }
   }
-}
-delay(500);
+  delay(500);
 }
